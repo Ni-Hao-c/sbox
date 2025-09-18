@@ -64,7 +64,7 @@ function displayResults(results, searchTerm) {
                     `).join('') : '<p>未找到相关结果</p>'}
                 </div>
                 
-                <p><a href="/">返回首页</a></p>
+                <p><a href="./index.html">返回首页</a></p>
             </main>
         </body>
         </html>

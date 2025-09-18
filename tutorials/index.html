@@ -1,20 +1,134 @@
-<!-- /tutorials/getting-started.html -->
-<article class="tutorial">
-  <h1>新手入门教程</h1>
-  
-  <section>
-    <h2>第1步：安装与配置</h2>
-    <p>运行以下命令安装：</p>
-    <pre><code class="language-bash">npm install myproject-cli</code></pre>
-  </section>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新手教程 - MyProject</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .tutorial-index {
+            margin: 20px 0;
+        }
+        
+        .tutorial-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .tutorial-list li {
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            border-left: 4px solid #007bff;
+        }
+        
+        .tutorial-list li:hover {
+            background-color: #e9ecef;
+        }
+        
+        .tutorial-list a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            display: block;
+        }
+        
+        .tutorial-list a:hover {
+            color: #007bff;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+        
+        .error {
+            color: #dc3545;
+            padding: 10px;
+            background-color: #f8d7da;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1><a href="/">飞鸟的sbox</a></h1>
+            <ul>
+                <li><a href="../docs/">API 文档</a></li>
+                <li><a href="../tutorials/">新手教程</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <h1>新手教程</h1>
+        
+        <div class="tutorial-index">
+            <h2>教程目录</h2>
+            <ul id="markdown-files-list" class="tutorial-list">
+                <li class="loading">正在加载教程列表...</li>
+            </ul>
+        </div>
+    </main>
 
-  <section>
-    <h2>第2步：运行第一个命令</h2>
-    <pre><code class="language-bash">myproject init</code></pre>
-  </section>
+    <script>
+        // 页面加载完成后获取 Markdown 文件列表
+        document.addEventListener('DOMContentLoaded', function() {
+            loadMarkdownFiles();
+        });
 
-  <div class="tutorial-nav">
-    <a href="#" class="prev">← 上一步</a>
-    <a href="#" class="next">下一步 →</a>
-  </div>
-</article>
+        function loadMarkdownFiles() {
+            const fileListElement = document.getElementById('markdown-files-list');
+            
+            // 使用 fetch API 获取 Markdown 文件列表
+            fetch('Markdown/')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('网络响应错误');
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    // 解析返回的 HTML 内容，提取 Markdown 文件链接
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const links = doc.querySelectorAll('a');
+                    
+                    const markdownFiles = [];
+                    links.forEach(link => {
+                        const href = link.getAttribute('href');
+                        if (href && (href.endsWith('.md') || href.endsWith('.markdown'))) {
+                            markdownFiles.push({
+                                name: href,
+                                url: 'Markdown/' + href
+                            });
+                        }
+                    });
+                    
+                    displayMarkdownFiles(markdownFiles);
+                })
+                .catch(error => {
+                    console.error('获取文件列表失败:', error);
+                    fileListElement.innerHTML = `<li class="error">加载教程列表失败: ${error.message}</li>`;
+                });
+        }
+        
+        function displayMarkdownFiles(files) {
+            const fileListElement = document.getElementById('markdown-files-list');
+            
+            if (files.length > 0) {
+                const fileListHTML = files.map(file => 
+                    `<li><a href="${file.url}" target="_blank">${decodeURIComponent(file.name)}</a></li>`
+                ).join('');
+                
+                fileListElement.innerHTML = fileListHTML;
+            } else {
+                fileListElement.innerHTML = '<li>暂无教程文件</li>';
+            }
+        }
+    </script>
+</body>
+</html>
