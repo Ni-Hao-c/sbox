@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API文档</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>API文档中心</h1>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="搜索API...">
+                <button id="searchBtn">搜索</button>
+            </div>
+            <div class="language-switch">
+                <button id="langZh" class="lang-btn active">中文</button>
+                <button id="langEn" class="lang-btn">English</button>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- 侧边栏标签 -->
+            <aside class="sidebar">
+                <h2>标签分类</h2>
+                <ul id="tagFilters">
+                    <li><a href="#" class="tag-filter active" data-tag="all">全部</a></li>
+                    <li><a href="#" class="tag-filter" data-tag="user">用户管理</a></li>
+                    <li><a href="#" class="tag-filter" data-tag="product">产品管理</a></li>
+                    <li><a href="#" class="tag-filter" data-tag="order">订单管理</a></li>
+                    <li><a href="#" class="tag-filter" data-tag="payment">支付</a></li>
+                    <li><a href="#" class="tag-filter" data-tag="auth">认证</a></li>
+                </ul>
+            </aside>
+
+            <!-- API列表 -->
+            <main class="api-list">
+                <h2>API接口列表</h2>
+                <div id="apiCardsContainer">
+                    <!-- API卡片将通过JavaScript动态生成 -->
+                </div>
+            </main>
+
+            <!-- API详情 -->
+            <section class="api-detail" id="apiDetailSection">
+                <div id="apiDetailContent">
+                    <!-- API详情将通过JavaScript动态生成 -->
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
