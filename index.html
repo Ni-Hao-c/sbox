@@ -54,32 +54,16 @@
     function loadMarkdownFiles() {
       const fileListElement = document.getElementById('markdown-files-list');
       
-      // 使用 fetch API 获取 Markdown 文件列表
-      fetch('tutorials/Markdown/')
+      // 使用 fetch API 获取 Markdown 文件列表，通过API方式
+      fetch('tutorials/Markdown/list.json')
         .then(response => {
           if (!response.ok) {
             throw new Error('网络响应错误');
           }
-          return response.text();
+          return response.json();
         })
-        .then(html => {
-          // 解析返回的 HTML 内容，提取 Markdown 文件链接
-          const parser = new DOMParser();
-          const doc = parser.parseFromString(html, 'text/html');
-          const links = doc.querySelectorAll('a');
-          
-          const markdownFiles = [];
-          links.forEach(link => {
-            const href = link.getAttribute('href');
-            if (href && (href.endsWith('.md') || href.endsWith('.markdown'))) {
-              markdownFiles.push({
-                name: href,
-                url: 'tutorials/Markdown/' + href
-              });
-            }
-          });
-          
-          displayMarkdownFiles(markdownFiles);
+        .then(files => {
+          displayMarkdownFiles(files);
         })
         .catch(error => {
           console.error('获取文件列表失败:', error);
@@ -92,7 +76,7 @@
       
       if (files.length > 0) {
         const fileListHTML = files.map(file => 
-          `<li><a href="${file.url}" target="_blank">${decodeURIComponent(file.name)}</a></li>`
+          `<li><a href="tutorials/Markdown/${file}" target="_blank">${decodeURIComponent(file)}</a></li>`
         ).join('');
         
         fileListElement.innerHTML = fileListHTML;
