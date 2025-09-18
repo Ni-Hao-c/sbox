@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MyProject - 首页</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <h1><a href="/">MyProject</a></h1>
+      <ul>
+        <li><a href="/docs/">API 文档</a></li>
+        <li><a href="/tutorials/">新手教程</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="hero">
+    <h2>欢迎使用 MyProject</h2>
+    <p>一个强大、易用的开发工具/平台</p>
+    
+    <!-- 搜索框 -->
+    <div class="search-container">
+      <input type="text" id="search-input" placeholder="搜索文档、教程..." />
+      <button onclick="performSearch()">🔍</button>
+    </div>
+
+    <div class="quick-links">
+      <a href="/docs/api-reference.html">查看 API 文档 →</a>
+      <a href="/tutorials/getting-started.html">开始新手教程 →</a>
+    </div>
+  </main>
+
+  <script src="js/search.js"></script>
+</body>
+</html>

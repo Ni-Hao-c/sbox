@@ -1,2 +1,0 @@
-# sbox
-### A simple sandbox
