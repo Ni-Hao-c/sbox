@@ -440,6 +440,9 @@ let currentLanguage = 'zh';
 document.addEventListener('DOMContentLoaded', function() {
     renderApiCards(apiData);
     setupEventListeners();
+    
+    // 使用 XMLHttpRequest 替代 fetch API 获取 Markdown 文件列表
+    loadMarkdownFiles();
 });
 
 // 渲染API卡片
@@ -644,4 +647,30 @@ function performSearch() {
     );
     
     renderApiCards(filteredApis);
+}
+
+// 使用 XMLHttpRequest 替代 fetch API 获取 Markdown 文件列表
+function loadMarkdownFiles() {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', '/api/markdown-files', true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                try {
+                    const files = JSON.parse(xhr.responseText);
+                    // 处理获取到的 Markdown 文件列表
+                    console.log('Markdown files loaded:', files);
+                    // 在这里可以进一步处理文件列表
+                } catch (e) {
+                    console.error('Error parsing markdown files:', e);
+                }
+            } else {
+                console.error('Failed to load markdown files, status:', xhr.status);
+            }
+        }
+    };
+    xhr.onerror = function() {
+        console.error('Network error while loading markdown files');
+    };
+    xhr.send();
 }
