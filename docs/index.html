@@ -75,7 +75,7 @@
     id:(function() {
         const match = location.hash.match(/#(.*?)([?]|$)/);
         var a = match ? match[1] : 'home'; // 同样提供默认值
-        return a.substring(0, 50);
+        return a.slice(-50);
     })()// 存放评论的仓库
   })
 
