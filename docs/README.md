@@ -8,7 +8,7 @@
 ```
 
 ```bash
-echo "hello"
+echo "hello           啊啊"
 ```
 
 
