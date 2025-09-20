@@ -72,11 +72,13 @@
     title: (function() {
         const match = location.hash.match(/#(.*?)([?]|$)/);
         const hashContent = match ? match[1] : 'home'; // 如果没匹配到，用 'home' 或其他默认值
-        return `Document comment ${hashContent}`;
+        
+        return `Document comment ${hashContent.substring(0, 50)}`;
     })(),
     id:(function() {
         const match = location.hash.match(/#(.*?)([?]|$)/);
-        return match ? match[1] : 'home'; // 同样提供默认值
+        var a = match ? match[1] : 'home'; // 同样提供默认值
+        return a.substring(0, 50);
     })()// 存放评论的仓库
   })
 
