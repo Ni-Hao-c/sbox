@@ -70,10 +70,10 @@
     // facebook-like distraction free mode
     distractionFreeMode: false,
     title: (function() {
-        const match = location.hash.match(/#(.*?)([?]|$)/);
+        const match = location.match(/#(.*?)([?]|$)/);
         const hashContent = match ? match[1] : 'home'; // 如果没匹配到，用 'home' 或其他默认值
         
-        return `Document comment ${hashContent.substring(0, 50)}`;
+        return `Document ${hashContent.substring(0, 50)}`;
     })(),
     id:(function() {
         const match = location.hash.match(/#(.*?)([?]|$)/);
