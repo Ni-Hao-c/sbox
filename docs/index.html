@@ -58,7 +58,8 @@
 <script>
 
   var gitalk = new Gitalk({
-    id: decodeURI(window.location.pathname),
+ 
+
     clientID: 'Ov23liyYnscdZZWt60T9',
     clientSecret: 'c0c9a940697eb2b27a83a6b740a25bae2a607dfd',
     repo: 'sbox',
@@ -66,7 +67,15 @@
     admin: ['Ni-Hao-c'],
     // facebook-like distraction free mode
     distractionFreeMode: false
+    title: `Document comment ${location.hash.match(/#(.*?)([?]|$)/)[1]}`,
+    id: location.hash.match(/#(.*?)([?]|$)/)[1],  // 存放评论的仓库
   })
+
+  window.onhashchange = function (event) {
+        if (event.newURL.split('?')[0] !== event.oldURL.split('?')[0]) {
+            location.reload()
+        }
+
 </script>
  
 </body>
