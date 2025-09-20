@@ -30,10 +30,20 @@
       //nameLink: 'rendme.md',
       // Custom file name
       coverpage: '_coverpage.md',
+      pagination: {
+        previousText: '上一卷',
+        nextText: '下一卷',
+        crossChapter: true,
+        crossChapterText: true
+      },
 
+      progress: {
+        position: "top",
+        color: "var(--theme-color,#42b983)",
+        height: "3px",
+      },
 
-      // multiple covers
-      coverpage: ['/', '/zh-cn/'],
+  
 
 
     }
@@ -46,12 +56,14 @@
 
   <script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
-  
+  <script src="//cdn.jsdelivr.net/npm/@alertbox/docsify-footer/dist/docsify-footer.min.js"></script>
 
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
 
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/gitalk.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+  <script src="<https://cdn.jsdelivr.net/npm/docsify-progress@latest/dist/progress.min.js>"></script>
+
   <script>
     const gitalk = new Gitalk({
       clientID: 'Ov23liyYnscdZZWt60T9',

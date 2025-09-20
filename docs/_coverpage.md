@@ -12,7 +12,9 @@
 - ~~本文仍符合学位授予规定，决定继续维持授予其最佳sbox中文文档的决议。~~
 # 欢迎大家评论！
 
-[s&box官网](https://sbox.game/)
-[Get Started](README.md)
+[🏅s&box官网](https://sbox.game/)
+[🧑‍🏫api](0.api/api.md)
+[✈️Get Started](README.md)
+
 
 

@@ -1,3 +1,24 @@
 
-* [首页](zh-cn/)
-* [指南](zh-cn/guide "The greatest guide in the world" )
+* 1.初见
+
+  * [快速开始](1.初见/guide.md)
+  
+
+* 2.中级
+
+  * [配置项](zh-cn/configuration.md)
+ 
+
+* 3.大师
+
+  * [部署](zh-cn/deploy.md)
+
+
+* 4.当年
+  * [部署](zh-cn/deploy.md)
+
+* 5.其他
+  
+* api
+  * [api](zh-cn/awesome.md)
+* [Changelog](zh-cn/changelog.md)
