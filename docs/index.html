@@ -57,6 +57,31 @@
      
       },
 
+       routeChange: function () {
+        // 删除旧的 Gitalk 容器
+        const oldGitalkContainer = document.getElementById('gitalk-container');
+        if (oldGitalkContainer) {
+          oldGitalkContainer.remove();
+        }
+
+        // 创建新的 Gitalk 容器
+        const newGitalkContainer = document.createElement('div');
+        newGitalkContainer.id = 'gitalk-container';
+        document.body.appendChild(newGitalkContainer);
+
+        // 重新初始化 Gitalk
+        const gitalk = new Gitalk({
+          id: decodeURI(window.location.pathname).slice(-50),
+          clientID: 'Ov23liyYnscdZZWt60T9',
+          clientSecret: 'c0c9a940697eb2b27a83a6b740a25bae2a607dfd',
+          repo: 'sbox',
+          owner: 'Ni-Hao-c',
+          admin: ['Ni-Hao-c'],
+          distractionFreeMode: false
+        });
+        gitalk.render('gitalk-container');
+      }
+
   
 
 
