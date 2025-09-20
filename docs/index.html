@@ -66,9 +66,9 @@
     owner: 'Ni-Hao-c',
     admin: ['Ni-Hao-c'],
     // facebook-like distraction free mode
-    distractionFreeMode: false
+    distractionFreeMode: false,
     title: `Document comment ${location.hash.match(/#(.*?)([?]|$)/)[1]}`,
-    id: location.hash.match(/#(.*?)([?]|$)/)[1],  // 存放评论的仓库
+    id: location.hash.match(/#(.*?)([?]|$)/)[1] // 存放评论的仓库
   })
 
   window.onhashchange = function (event) {
