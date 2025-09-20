@@ -52,13 +52,13 @@
 
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/gitalk.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.19.0/js/md5.min.js"></script>
+ 
 
   
 <script>
 
   var gitalk = new Gitalk({
-    id:md5(location.pathname),
+    id: decodeURI(window.location.pathname),
     clientID: 'Ov23liyYnscdZZWt60T9',
     clientSecret: 'c0c9a940697eb2b27a83a6b740a25bae2a607dfd',
     repo: 'sbox',
