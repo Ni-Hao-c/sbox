@@ -44,44 +44,25 @@
       },
 
         ready: function () {
-        // 动态初始化 Gitalk
-        const gitalk = new Gitalk({
-          id: decodeURI(window.location.href).slice(-50),
-          clientID: 'Ov23liyYnscdZZWt60T9',
-          clientSecret: 'c0c9a940697eb2b27a83a6b740a25bae2a607dfd',
-          repo: 'sbox',
-          owner: 'Ni-Hao-c',
-          admin: ['Ni-Hao-c'],
-          distractionFreeMode: false
-        });
-       gitalk.render('gitalk-container');
-      },
-
-       routeChange: function () {
-        // 删除旧的 Gitalk 容器
-        const oldGitalkContainer = document.getElementById('gitalk-container');
-        if (oldGitalkContainer) {
-          oldGitalkContainer.remove();
+        // 提取 Gitalk 初始化逻辑为独立函数
+        function initGitalk() {
+          const gitalk = new Gitalk({
+            id: decodeURI(window.location.pathname), // 使用 pathname 确保唯一性
+            clientID: 'Ov23liyYnscdZZWt60T9',
+            clientSecret: 'c0c9a940697eb2b27a83a6b740a25bae2a607dfd',
+            repo: 'sbox',
+            owner: 'Ni-Hao-c',
+            admin: ['Ni-Hao-c'],
+            distractionFreeMode: false
+          });
+          gitalk.render('gitalk-container'); // 确保页面中有一个 id 为 gitalk-container 的元素
         }
 
-        // 创建新的 Gitalk 容器
-        const newGitalkContainer = document.createElement('div');
-        newGitalkContainer.id = 'gitalk-container';
-        document.body.appendChild(newGitalkContainer);
+        // 初始化 Gitalk
+        initGitalk();
 
-        // 重新初始化 Gitalk
-        const gitalk = new Gitalk({
-          id: decodeURI(window.location.pathname).slice(-50),
-          clientID: 'Ov23liyYnscdZZWt60T9',
-          clientSecret: 'c0c9a940697eb2b27a83a6b740a25bae2a607dfd',
-          repo: 'sbox',
-          owner: 'Ni-Hao-c',
-          admin: ['Ni-Hao-c'],
-          distractionFreeMode: false
-        });
-        gitalk.render('gitalk-container');
-      }
-
+        // 监听路由变化事件，确保每次路由切换时重新初始化 Gitalk
+        window.addEventListener('hashchange', initGitalk);
   
 
 
