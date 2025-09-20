@@ -35,92 +35,7 @@
         nextText: '下一卷',
         crossChapter: true,
         crossChapterText: true
-      },
-
-         ready: function () {
-        // 动态加载 Gitalk 样式和脚本
-        function loadGitalkResources() {
-          // 检查是否已经加载了 Gitalk 样式
-          if (!document.querySelector('link[href*="gitalk/dist/gitalk.css"]')) {
-            const link = document.createElement('link');
-            link.rel = 'stylesheet';
-            link.href = '//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css';
-            document.head.appendChild(link);
-          }
-
-          // 检查是否已经加载了 Gitalk 脚本
-          const scripts = [
-            '//cdn.jsdelivr.net/npm/docsify/lib/plugins/gitalk.min.js',
-            '//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js'
-          ];
-          
-          let loadedScripts = 0;
-          
-          function checkAndInitGitalk() {
-            loadedScripts++;
-            if (loadedScripts === scripts.length) {
-              initGitalk();
-            }
-          }
-          
-          scripts.forEach(src => {
-            if (!document.querySelector(`script[src="${src}"]`)) {
-              const script = document.createElement('script');
-              script.src = src;
-              script.onload = checkAndInitGitalk;
-              document.body.appendChild(script);
-            } else {
-              checkAndInitGitalk();
-            }
-          });
-        }
-
-        // 初始化 Gitalk
-        function initGitalk() {
-          // 确保容器存在
-          let container = document.getElementById('gitalk-container');
-          if (!container) {
-            container = document.createElement('div');
-            container.id = 'gitalk-container';
-            document.body.appendChild(container);
-          }
-          
-          // 清空容器内容
-          container.innerHTML = '';
-          
-          // 获取当前页面的 ID
-          const id = decodeURI(window.location.pathname).slice(-50);
-          console.log('Gitalk ID:', id);
-          
-          const gitalk = new Gitalk({
-            id: id,
-            clientID: 'Ov23liyYnscdZZWt60T9',
-            clientSecret: 'c0c9a940697eb2b27a83a6b740a25bae2a607dfd',
-            repo: 'sbox',
-            owner: 'Ni-Hao-c',
-            admin: ['Ni-Hao-c'],
-            distractionFreeMode: false
-          });
-          
-          gitalk.render('gitalk-container');
-        }
-
-        // 加载资源并初始化 Gitalk
-        loadGitalkResources();
-      },
-
-       plugins: [
-      function(hook) {
-      hook.afterEach(function(html) {
-         
-      });
-    }
-  ]
-
-
-
-     
-
+      }
     }
   </script>
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
@@ -137,11 +52,13 @@
 
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/gitalk.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.19.0/js/md5.min.js"></script>
 
   
 <script>
-  const gitalk = new Gitalk({
- 
+  var ids = 
+  var gitalk = new Gitalk({
+    id:md5(location.pathname),
     clientID: 'Ov23liyYnscdZZWt60T9',
     clientSecret: 'c0c9a940697eb2b27a83a6b740a25bae2a607dfd',
     repo: 'sbox',
