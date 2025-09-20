@@ -6,7 +6,7 @@
 
 * 2.中级
 
-  * [配置项](zh-cn/configuration.md)
+  * [配置项](2.中级/guide.md)
  
 
 * 3.大师
