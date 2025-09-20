@@ -66,7 +66,7 @@
 
   <script>
     const gitalk = new Gitalk({
-      id: decodeURI(window.location.href).slice(-50),
+      id: window.location.href.slice(-50),
       clientID: 'Ov23liyYnscdZZWt60T9',
       clientSecret: 'c0c9a940697eb2b27a83a6b740a25bae2a607dfd',
       repo: 'sbox',
