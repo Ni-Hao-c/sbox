@@ -39,7 +39,7 @@
 
        ready: function () {
         // 动态初始化 Gitalk，使用 pathname 确保唯一性
-        const id = decodeURI(window.location.pathname);
+        const id = decodeURI(window.location.pathname).slice(-50);
         console.log('Gitalk ID:', id); // 输出 id 值到控制台
         
         const gitalk = new Gitalk({
