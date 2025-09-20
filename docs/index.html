@@ -70,7 +70,7 @@
     // facebook-like distraction free mode
     distractionFreeMode: false,
     title: (function() {
-        return `Document ${location.href.match(/#(.*?)([?]|$)/.slice(-50)}`;
+        return `Document ${location.href.match(/#(.*?)([?]|$)/).slice(-50)}`;
     })(),
     id:(function() {
         const match = location.hash.match(/#(.*?)([?]|$)/);
