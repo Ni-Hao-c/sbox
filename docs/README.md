@@ -8,12 +8,7 @@
 ```
 
 ```bash
-echo "hello"
+echo "是"
 ```
 
-```csharp
-function getAdder(int $x): int 
-{
-    return 123;
-}
-```
+
